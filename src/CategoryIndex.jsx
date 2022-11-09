@@ -13,7 +13,6 @@ export function CategoryIndex(props) {
                 <p>Height: {category.description}</p>
                 {/* <p> Category: {category.category_category}</p> */}
                 <button onClick={() => props.onSelectCategory(category)}>More info</button>
-                <button onClick={() => props.onSelectCategory(category)}>show exercises </button>
               </div>
             </div>
           ))}

@@ -7,19 +7,20 @@ import { Modal } from "./Modal";
 import { CategoryIndex } from "./CategoryIndex";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-import { LogoutLink } from "./Logout";
 import { CategoryShow } from "./CategoryShow";
 
 export function Home() {
-  const [categories, SetCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isCategoryShowVisible, setIsCategoryShowVisible] = useState(false);
   const [currentCategory, setCurrentCategory] = useState({});
+  const [currentExercises, setCurrentExercises] = useState({});
+  const [isExercisesShowVisible, setIsExercisesShowVisible] = useState(false);
 
   const handleIndexCategory = () => {
     console.log("handleIndexCategory");
     axios.get("http://localhost:3000/categories.json").then((response) => {
       console.log(response.data);
-      SetCategories(response.data);
+      setCategories(response.data);
     });
   };
 
@@ -35,10 +36,19 @@ export function Home() {
     setIsCategoryShowVisible(false);
   };
 
+  // const handleShowExercises = (exercise) => {
+  //   console.log("handleShowExercises", exercise);
+  //   setIsExercisesShowVisible(true);
+  //   setCurrentExercises(exercise);
+  // };
+  // const handleHideExercises = () => {
+  //   console.log("handleHideExercises");
+  //   setIsExercisesShowVisible(false);
+  // };
+
   return (
     <div>
       <Header />
-      <LogoutLink />
       <CategoryIndex categories={categories} onSelectCategory={handleShowCategory} />
       <Modal show={isCategoryShowVisible} onClose={handleHideCategory}>
         <CategoryShow category={currentCategory} />
