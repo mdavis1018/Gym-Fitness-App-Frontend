@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { ProfileUpdate } from "./ProfileUpdate";
 import { WorkoutsIndex } from "./WorkoutsIndex";
+import { Modal } from "./Modal";
 
 export function Profile() {
   const [profile, setProfile] = useState({});
   const [workouts, setWorkouts] = useState([]);
+  const [isUserShowVisible, setIsUserShowVisible] = useState(false);
+  const [currentProfile, setCurrentProfile] = useState({});
 
   const test = localStorage.getItem("user_id");
   const final = parseInt(test);
@@ -29,8 +33,33 @@ export function Profile() {
   };
   useEffect(handleIndexWorkouts, []);
 
+  const handleShowProfile = (profile) => {
+    console.log("handleShowProfile", profile);
+    setIsUserShowVisible(true);
+    setCurrentProfile(profile);
+  };
+
+  const handleHideProfile = () => {
+    console.log("handleHideProfile");
+    setIsUserShowVisible(false);
+  };
+
+  console.log(profile);
+  const handleUpdateUser = (id, params, successCallBack) => {
+    console.log("handleUpdateUser", params);
+    axios.patch(`http://localhost:3000/users/${id}.json`, params).then((response) => {
+      setProfile(response.data);
+      successCallBack();
+      handleHideProfile();
+    });
+  };
   return (
     <div>
+      <button onClick={() => handleShowProfile(profile)}>Update User </button>
+
+      <Modal show={isUserShowVisible} onClose={handleHideProfile}>
+        <ProfileUpdate onUpdateUser={handleUpdateUser} user={profile} />
+      </Modal>
       <h1> This is the profile page</h1>
       <p>Name: {profile.name}</p>
       <p>Weight: {profile.weight}</p>
@@ -40,3 +69,11 @@ export function Profile() {
     </div>
   );
 }
+
+//   profile.map((profile) => {
+//     if (profile.id === response.data.id) {
+//       return response.data;
+//     } else {
+//       return profile;
+//     }
+//   })
