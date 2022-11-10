@@ -8,6 +8,7 @@ import { CategoryIndex } from "./CategoryIndex";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { CategoryShow } from "./CategoryShow";
+import { DetailsNew } from "./DetailsNew";
 
 export function Home() {
   const [categories, setCategories] = useState([]);
@@ -15,6 +16,8 @@ export function Home() {
   const [currentCategory, setCurrentCategory] = useState({});
   const [currentExercises, setCurrentExercises] = useState({});
   const [isExercisesShowVisible, setIsExercisesShowVisible] = useState(false);
+  const [details, setDetails] = useState([]);
+  const [isDetailsShowVisible, setIsDetailsShowVisible] = useState(false);
 
   const handleIndexCategory = () => {
     console.log("handleIndexCategory");
@@ -36,22 +39,38 @@ export function Home() {
     setIsCategoryShowVisible(false);
   };
 
-  // const handleShowExercises = (exercise) => {
-  //   console.log("handleShowExercises", exercise);
-  //   setIsExercisesShowVisible(true);
-  //   setCurrentExercises(exercise);
-  // };
-  // const handleHideExercises = () => {
-  //   console.log("handleHideExercises");
-  //   setIsExercisesShowVisible(false);
-  // };
+  const handleCreateDetails = (params, successCallback) => {
+    console.log("handleCreatePhoto", params);
+    axios.post("http://localhost:3000/workout_details.json", params).then((response) => {
+      setDetails([...details, response.data]);
+      successCallback();
+    });
+  };
+
+  const handleShowDetailsForm = (exercise) => {
+    console.log("handleShowExercises", exercise);
+    setIsDetailsShowVisible(true);
+    setCurrentExercises(exercise);
+  };
+  const handleHideDetailsForm = () => {
+    console.log("handleHideExercises");
+    setIsDetailsShowVisible(false);
+  };
 
   return (
     <div>
       <Header />
+      <DetailsNew onCreateDetail={handleCreateDetails} />
       <CategoryIndex categories={categories} onSelectCategory={handleShowCategory} />
       <Modal show={isCategoryShowVisible} onClose={handleHideCategory}>
-        <CategoryShow category={currentCategory} />
+        <CategoryShow category={currentCategory} onSelectDetail={handleShowDetailsForm} />
+        <Modal show={isDetailsShowVisible} onClose={handleHideDetailsForm}>
+          <DetailsNew
+            exercise={currentExercises}
+            // onSelectDetail={handleShowDetailsForm}
+            onCreateDetail={handleCreateDetails}
+          />
+        </Modal>
       </Modal>
       <Footer />
     </div>
