@@ -40,7 +40,38 @@ export function WorkoutsNew(props) {
     });
   };
 
-  console.log(selectedDate);
+  var schedule = "";
+  var useful = "";
+  var last = "";
+  var first = "";
+  var year = "";
+  var month1 = "";
+  var month = "";
+  var day1 = "";
+  var day = "";
+  var finalDay = "";
+  var finalMonth = "";
+  var finalYear = "";
+
+  if (selectedDate) {
+    schedule = selectedDate;
+    // console.log(schedule);
+    // console.log(typeof schedule);
+    useful = JSON.stringify(schedule);
+    // console.log(useful);
+    last = useful.split("");
+    first = last.slice(1, 5);
+    year = first.join("");
+    month1 = last.slice(6, 8);
+    month = month1.join("");
+    day1 = last.slice(9, 11);
+    day = day1.join("");
+    finalDay = parseInt(day);
+    finalMonth = parseInt(month);
+    finalYear = parseInt(year);
+    // console.log(finalDay, finalMonth, finalYear);
+  }
+  // console.log(finalDay, finalMonth, finalYear);
 
   return (
     <div>
@@ -67,7 +98,7 @@ export function WorkoutsNew(props) {
           value={selectedDate}
         />
       </div>
-      <DateNew onCreateDate={handleCreateDate} date={selectedDate} />
+      <DateNew onCreateDate={handleCreateDate} day={finalDay} month={finalMonth} year={finalYear} />
     </div>
   );
 }

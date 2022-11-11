@@ -1,6 +1,7 @@
 import { DetailsNew } from "./DetailsNew";
 
 export function WorkoutsIndex(props) {
+  console.log(props);
   return (
     <div>
       <h1>All Your Workouts </h1>
