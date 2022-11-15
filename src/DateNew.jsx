@@ -61,22 +61,22 @@ export function DateNew(props) {
     // console.log(finalDay, finalMonth, finalYear);
   }
 
-  console.log(props);
+  console.log(finalYear, finalDay, finalMonth);
 
   return (
     <div>
       <h1>New Date</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="d-none">
           Day: <input defaultValue={finalDay} name="day" type="number" />
         </div>
-        <div>
+        <div className="d-none">
           Month: <input defaultValue={finalMonth} name="month" type="number" />
         </div>
-        <div>
+        <div className="d-none">
           Year: <input defaultValue={finalYear} name="year" type="number" />
         </div>
-        <div>
+        <div className="d-none">
           Workout ID: <input defaultValue={props.workout.id} name="workout_id" type="number" />
         </div>
         <button type="submit">Create Date </button>

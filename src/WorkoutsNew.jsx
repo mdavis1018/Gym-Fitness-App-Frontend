@@ -9,6 +9,9 @@ export function WorkoutsNew(props) {
   // const [calendarText, setCalendarText] = useState(`No Date is selected`);
   // const [date, setDate] = useState([]);
 
+  const test = localStorage.getItem("user_id");
+  const final = parseInt(test);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
@@ -72,8 +75,8 @@ export function WorkoutsNew(props) {
         <div>
           Title: <input name="title" type="text" />
         </div>
-        <div>
-          User ID: <input name="user_id" type="number" />
+        <div className="d-none">
+          User ID: <input defaultValue={final} name="user_id" type="number" />
         </div>
         <div>
           Status: <input name="status" type="boolean" />

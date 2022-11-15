@@ -9,7 +9,7 @@ export function DetailsNew(props) {
     <div>
       <h1>New Details</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="d-none">
           exercise_id: <input defaultValue={props.exercise?.id} name="exercise_id" type="number" />
         </div>
         {/* <div>

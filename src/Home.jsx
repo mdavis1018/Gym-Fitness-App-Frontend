@@ -71,9 +71,9 @@ export function Home() {
   };
 
   return (
-    <div>
-      <Header />
-      <DetailsNew onCreateDetail={handleCreateDetails} />
+    <div class="p-3 mb-2 bg-dark">
+      <Header user={profile} />
+      {/* <DetailsNew onCreateDetail={handleCreateDetails} /> */}
       <CategoryIndex categories={categories} onSelectCategory={handleShowCategory} />
       <Modal show={isCategoryShowVisible} onClose={handleHideCategory}>
         <CategoryShow category={currentCategory} onSelectDetail={handleShowDetailsForm} />

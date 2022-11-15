@@ -16,7 +16,7 @@ export function ProfileUpdate(props) {
           Image: <input defaultValue={props.user.image_url} name="image_url" type="text" />
         </div>
         <div>
-          weight: <input defaultValue={props.user.weight} name="weight" type="number" />
+          Weight: <input defaultValue={props.user.weight} name="weight" type="number" />
         </div>
         <button type="submit">Update User info</button>
       </form>

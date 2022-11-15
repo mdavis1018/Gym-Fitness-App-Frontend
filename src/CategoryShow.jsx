@@ -16,9 +16,9 @@ export function CategoryShow(props) {
             .map((exercise) => (
               <div className="card">
                 <div key={exercise.id}>
-                  <p>name: {exercise.name} </p>
-                  <p> description: {exercise.description} </p>
-                  <img src={exercise.image_url} />
+                  <p> Exercise Name: {exercise.name} </p>
+                  <p> Description: {exercise.description} </p>
+                  <img src={exercise.image_url} width="500" height="400" />
                   <button onClick={() => props.onSelectDetail(exercise)}>Add to workout</button>
                 </div>
               </div>

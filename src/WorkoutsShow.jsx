@@ -13,7 +13,7 @@ export function WorkoutsShow(props) {
     props.onDestroyDetails(props.workout.workout_details);
   };
 
-  console.log(props);
+  console.log(props.workout.day);
   return (
     <div>
       <h1>Workout Information</h1>
@@ -25,12 +25,11 @@ export function WorkoutsShow(props) {
               <div key={details.id}>
                 <p> Exercise: {details.exercise.name}</p>
                 {console.log(details)}
-                <img src={details.exercise.image_url} />
+                <img src={details.exercise.image_url} width="450" height="400" />
                 <p> Reps :{details.reps}</p>
                 <p> Sets: {details.sets}</p>
                 <p> Weight: {details.weight}</p>
               </div>
-              <button onClick={handleClick}>Destroy Details</button>
             </div>
           ))}
         </div>
@@ -42,6 +41,15 @@ export function WorkoutsShow(props) {
             <button type="submit">Update Status</button>
           </form> */}
         </div>
+      </div>
+      <div>
+        {props.workout.day?.map((day) => (
+          <div>
+            <p>
+              Scheduled For: {day.month}/{day.day}/{day.year}
+            </p>
+          </div>
+        ))}
       </div>
       <button onClick={() => props.onSelectDate(props.workout)}>Date Form </button>
       <button onClick={handleClick}>Delete Workout</button>
