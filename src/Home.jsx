@@ -9,6 +9,7 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { CategoryShow } from "./CategoryShow";
 import { DetailsNew } from "./DetailsNew";
+import { Profile } from "./Profile";
 
 export function Home() {
   const [categories, setCategories] = useState([]);
@@ -18,6 +19,18 @@ export function Home() {
   const [isExercisesShowVisible, setIsExercisesShowVisible] = useState(false);
   const [details, setDetails] = useState([]);
   const [isDetailsShowVisible, setIsDetailsShowVisible] = useState(false);
+  const [profile, setProfile] = useState({});
+
+  const test = localStorage.getItem("user_id");
+  const final = parseInt(test);
+  const handleUserInfo = () => {
+    axios.get("http://localhost:3000/users/" + test + ".json").then((response) => {
+      setProfile(response.data);
+    });
+  };
+  useEffect(handleUserInfo, []);
+
+  console.log(profile);
 
   const handleIndexCategory = () => {
     console.log("handleIndexCategory");
@@ -69,6 +82,7 @@ export function Home() {
             exercise={currentExercises}
             // onSelectDetail={handleShowDetailsForm}
             onCreateDetail={handleCreateDetails}
+            profile={profile}
           />
         </Modal>
       </Modal>
