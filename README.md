@@ -1,8 +1,7 @@
 # <Gym-Fitness-App-Frontend>
 
-Describe your app here. (What is your 1 minute “elevator pitch” of your capstone project? What problem does it solve? What inspired you to build it?)
 
-  This app is a fitness-app. It allows users to create workouts and choose from a list of exercises to add to their workout. Each workout can be scheduled for a particular date and the user can create a workout rotation/schedule. (Future: The app allows the user to set goals and track their progress. For example, if the user wants to lose/gain weight they can create a roadmap and then input data weekly and compare their stats with their created plan's trajectory and see if they are on track.)
+  This app is a fitness-app. I was inspired to built this application because I have always wanted a very customizable fitness-app that allows users to set goals in a variety of ways and be able to track their progress. This application allows users to create workouts and choose from a list of exercises to add to their workout. Each workout can be scheduled for a particular date and the user can create a workout rotation/schedule. 
   
 Describe the technologies you used to build your app (Ruby on Rails backend, React.js frontend, any libraries, APIs, etc.)
 
@@ -29,4 +28,7 @@ You can view the app on http://localhost:5173.
 
 ## Roadmap
 
-List any ideas you plan on implementing in the future.
+- Using the drag and drop react library I plan on allowing users to drag a particular exercise into one of their workouts. This will improve the UI overall.
+ - I plan on using the chart.js library to create interactive graphs in which the user can see their data displayed in a visualized way. 
+ - I plan on implementing an exercise db to the backend that allows users to select from thousands of exercises.
+  
