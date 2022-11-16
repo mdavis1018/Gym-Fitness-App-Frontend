@@ -6,6 +6,11 @@
 Describe the technologies you used to build your app (Ruby on Rails backend, React.js frontend, any libraries, APIs, etc.)
 
   My backend was built using Ruby on Rails. The Frontend is built using React.Js. One library I used was the React Calandar library in order to create a form that the user could submit a date to schedule their workout.
+  - Bootstrap-React
+  - Axios-React
+  - React-Router
+  - React-Calendar
+  - Chart.Js
 Optional: Add screenshots or gifs of your application
 
 ## Installation
